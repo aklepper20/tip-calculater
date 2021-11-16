@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="bill">
+        <p>Bill</p>
+        <div class="input_container">
+          <img src="./images/icon-dollar.svg" alt="Dollar Sign">
+          <input type="text" placeholder="0">
+        </div>
+      </div>
+      <div class="tip">
+        <p>Select Tip %</p>
+        <div class="row grid-3-row">
+          <button>5%</button>
+          <button>10%</button>
+          <button>15%</button>
+        </div>
+        <div class="row">
+            <button>25%</button>
+            <button>50%</button>
+            <button class="custom-btn">Custom</button>
+        </div>
+      </div>
+      <div class="people">
+        <p>Number of People</p>
+            <div class="input_container">
+              <img src="./images/icon-person.svg" alt="Person Icon">
+              <input type="text" placeholder="0">
+            </div>
+      </div>
+    </div>
+
+
+    <div class="right">
+      <div class="display">
+        <div class="amount">
+          <div class="tip_per">
+            <p>Tip Amount</p>
+            <p class="subheader">/person</p>
+          </div>
+          <h1>$0.00</h1>
+        </div>
+        <div class="amount margin-top">
+          <div class="tip_per">
+            <p>Total</p>
+            <p class="subheader">/person</p>
+          </div>
+          <h1>$0.00</h1>
+        </div>
+      </div>
+      <div class="reset">
+        <button>RESET</button>
+      </div>
+    </div>
+  </div>>
+</body>
+</html>
