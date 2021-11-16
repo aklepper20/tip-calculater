@@ -11,7 +11,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: hsl(185, 41%, 84%);
+}
+
+.header {
+  margin-bottom: 80px;
+}
+
+.header h2 {
+  color: hsl(184, 14%, 56%);
+  letter-spacing: 5px;
 }
 
 .container {
