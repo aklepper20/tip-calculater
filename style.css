@@ -106,8 +106,9 @@ p {
 
 .row .custom-btn {
   background-color: hsl(0, 0%, 100%);
-  color: hsl(184, 14%, 56%);
+  color: hsl(183, 100%, 15%);
   padding-left: 12px;
+  font-weight: 700;
 }
 
 .people {
@@ -156,6 +157,10 @@ p {
   font-size: 18px;
   color: hsl(183, 100%, 15%);
   font-weight: 700;
+}
+
+.display h1 {
+  color: hsl(185, 41%, 84%);
 }
 
 .amount {
