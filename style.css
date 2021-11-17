@@ -154,7 +154,8 @@ p {
   background: none;
   border: none;
   font-size: 18px;
-  color: hsl(184, 14%, 56%);
+  color: hsl(183, 100%, 15%);
+  font-weight: 700;
 }
 
 .amount {
