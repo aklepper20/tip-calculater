@@ -59,7 +59,7 @@ function calcTipSplit(bill, percent, amountOfPeople) {
   totalPerPerson = tipPerPerson + totalAmountPerPerson;
 
   return totalPerPerson;
-  return totalPerPerson;
+  return totalAmountPerPerson;
 };
 
 //Grab the ID of tip amount
