@@ -58,9 +58,14 @@ function calcTipSplit(bill, percent, amountOfPeople) {
   totalAmountPerPerson = bill / amountOfPeople;
   totalPerPerson = tipPerPerson + totalAmountPerPerson;
 
+  return tipPerPerson;
   return totalPerPerson;
-  return totalAmountPerPerson;
 };
 
 //Grab the ID of tip amount
 //Put a lister on it. On change switch the innerText on that element
+// let completeTip = document.getElementById('tipPerPerson');
+// let completeAmount = document.getElementById('totalPerPerson');
+
+// completeTip.innerText = tipPerPerson;
+// completeAmount.inner = totalPerPerson
