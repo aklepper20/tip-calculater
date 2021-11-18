@@ -23,8 +23,6 @@ theme.addEventListener('click', function() {
     }
 });
 
-////////////////////////////////////////////////////////////////
-//How can I record what input I press in the bill.
 let bill = 0;
 let percent;
 let amountOfPeople = 0;
@@ -40,29 +38,21 @@ let tipButtons = document.querySelectorAll('.cal-btn');
 input.addEventListener('change', function() {
   bill = input.value;
   calcTipSplit(bill, percent, amountOfPeople);
-  console.log(bill, percent, amountOfPeople)
 });
 
-// loop through the buttons and on each button grab its innerText value
-//Since its a string, we parseFloat function to change it into an integer
 tipButtons.forEach((btn) => {
   btn.addEventListener('click', function() {
     percent = parseFloat(btn.innerText)/100;
     calcTipSplit(bill, percent, amountOfPeople);
-    console.log(bill, percent, amountOfPeople)
   })
 });
 
 inputPeople.addEventListener('change', function() {
   amountOfPeople = inputPeople.value;
   calcTipSplit(bill, percent, amountOfPeople);
-  console.log(bill, percent, amountOfPeople)
 });
 
-// console.log(calcTipSplit(bill, percent, amountOfPeople));
-
 function calcTipSplit(bill, percent, amountOfPeople) {
-  console.log('IN THE FUNCTION', bill, percent, amountOfPeople)
   totalTip = bill * percent;
   tipPerPerson = totalTip / amountOfPeople;
   totalAmountPerPerson = bill / amountOfPeople;
@@ -72,4 +62,5 @@ function calcTipSplit(bill, percent, amountOfPeople) {
   return totalPerPerson;
 };
 
-//calcTipSplit(100, .15,2)
+//Grab the ID of tip amount
+//Put a lister on it. On change switch the innerText on that element
