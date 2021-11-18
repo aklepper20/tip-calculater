@@ -25,32 +25,51 @@ theme.addEventListener('click', function() {
 
 ////////////////////////////////////////////////////////////////
 //How can I record what input I press in the bill.
+let bill = 0;
+let percent;
+let amountOfPeople = 0;
+let totalTip;
+let totalAmountPerPerson;
+let tipPerPerson;
+let totalPerPerson;
+
 let input = document.getElementById('input');
-console.log(input)
+let inputPeople = document.getElementById('inputPeople');
+let tipButtons = document.querySelectorAll('.cal-btn');
 
 input.addEventListener('change', function() {
-  console.log(input.value)
-})
-
-let inputPeople = document.getElementById('inputPeople');
-inputPeople.addEventListener('change', function() {
-  console.log(inputPeople.value)
-})
+  bill = input.value;
+  calcTipSplit(bill, percent, amountOfPeople);
+  console.log(bill, percent, amountOfPeople)
+});
 
 // loop through the buttons and on each button grab its innerText value
 //Since its a string, we parseFloat function to change it into an integer
-let tipButtons = document.querySelectorAll('.cal-btn')
-
 tipButtons.forEach((btn) => {
   btn.addEventListener('click', function() {
-    console.log(parseFloat(btn.innerText)/100)
+    percent = parseFloat(btn.innerText)/100;
+    calcTipSplit(bill, percent, amountOfPeople);
+    console.log(bill, percent, amountOfPeople)
   })
-})
+});
+
+inputPeople.addEventListener('change', function() {
+  amountOfPeople = inputPeople.value;
+  calcTipSplit(bill, percent, amountOfPeople);
+  console.log(bill, percent, amountOfPeople)
+});
+
+// console.log(calcTipSplit(bill, percent, amountOfPeople));
 
 function calcTipSplit(bill, percent, amountOfPeople) {
-  //create the logic
-  //return tip amount per person
-  //return total amount per person
-}
+  console.log('IN THE FUNCTION', bill, percent, amountOfPeople)
+  totalTip = bill * percent;
+  tipPerPerson = totalTip / amountOfPeople;
+  totalAmountPerPerson = bill / amountOfPeople;
+  totalPerPerson = tipPerPerson + totalAmountPerPerson;
+
+  return totalPerPerson;
+  return totalPerPerson;
+};
 
 //calcTipSplit(100, .15,2)
