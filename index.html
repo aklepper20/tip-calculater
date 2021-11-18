@@ -12,6 +12,7 @@
 </head>
 <body>
   <div class="header">
+    <img id="theme" src="images/icon-moon (1).svg" alt="Image of moon">
     <h2>SPLI</h2>
     <h2>TTER</h2>
   </div>
@@ -21,27 +22,27 @@
         <p>Bill</p>
         <div class="input_container">
           <img src="./images/icon-dollar.svg" alt="Dollar Sign">
-          <input type="text" placeholder="0">
+          <input id="input" type="text" placeholder="0">
         </div>
       </div>
       <div class="tip">
         <p>Select Tip %</p>
         <div class="row grid-3-row">
-          <button>5%</button>
-          <button>10%</button>
-          <button>15%</button>
+          <button class="cal-btn">5%</button>
+          <button class="cal-btn">10%</button>
+          <button class="cal-btn">15%</button>
         </div>
         <div class="row">
-            <button>25%</button>
-            <button>50%</button>
-            <button class="custom-btn">Custom</button>
+            <button class="cal-btn">25%</button>
+            <button class="cal-btn">50%</button>
+            <input type="text" placeholder="custom" class="custom-btn"></input>
         </div>
       </div>
       <div class="people">
         <p>Number of People</p>
             <div class="input_container">
               <img src="./images/icon-person.svg" alt="Person Icon">
-              <input type="text" placeholder="0">
+              <input type="text" placeholder="0" id="inputPeople">
             </div>
       </div>
     </div>
@@ -67,5 +68,6 @@
       </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

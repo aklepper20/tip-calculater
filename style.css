@@ -104,11 +104,22 @@ p {
   border-radius: 6px;
 }
 
+.row button:hover {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+
 .row .custom-btn {
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(189, 41%, 97%);
   color: hsl(183, 100%, 15%);
   padding-left: 12px;
   font-weight: 700;
+  font-size: medium;
+  width: 100px;
+  height: 40px;
+  border: none;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .people {
