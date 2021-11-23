@@ -26,7 +26,10 @@ theme.addEventListener('click', function() {
 let billInput = document.getElementById('input');
 let peopleInput = document.getElementById('inputPeople');
 let buttons = document.querySelectorAll('.cal-btn');
+let customButton = document.getElementById('custom-btn');
+
 let resetBtn = document.getElementById('reset-btn');
+
 let tipPersonAmount = document.getElementById('tipPerPerson');
 let totalPersonAmount = document.getElementById('totalPerPerson');
 
@@ -41,12 +44,19 @@ const calcTipSplit = (bill, numberOfPeople, tipPercentage) => {
 const getInputs = () => {
   let bill = billInput.value;
   let numberOfPeople = peopleInput.value;
-  buttons.forEach((btn) => {
-  btn.addEventListener('click', function() {
-      let tipPercentage = parseFloat(btn.innerText) / 100;
-      calcTipSplit(bill, numberOfPeople, tipPercentage);
-    })
-  });
+  let custom = parseFloat(customButton.value) / 100;
+
+  if (!custom) {
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', function() {
+        let tipPercentage = parseFloat(btn.innerText) / 100;
+        calcTipSplit(bill, numberOfPeople, tipPercentage);
+      })
+    });
+  } else {
+      calcTipSplit(bill, numberOfPeople, custom)
+  }
+
 };
 
 const resetButton = () => {
@@ -60,4 +70,5 @@ const resetButton = () => {
 
 billInput.addEventListener('change', getInputs);
 peopleInput.addEventListener('change', getInputs);
+customButton.addEventListener('change', getInputs)
 resetBtn.addEventListener('click', resetButton);
