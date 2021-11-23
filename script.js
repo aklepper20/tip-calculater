@@ -23,49 +23,41 @@ theme.addEventListener('click', function() {
     }
 });
 
-let bill = 0;
-let percent;
-let amountOfPeople = 0;
-let totalTip;
-let totalAmountPerPerson;
-let tipPerPerson;
-let totalPerPerson;
+let billInput = document.getElementById('input');
+let peopleInput = document.getElementById('inputPeople');
+let buttons = document.querySelectorAll('.cal-btn');
+let resetBtn = document.getElementById('reset-btn');
+let tipPersonAmount = document.getElementById('tipPerPerson');
+let totalPersonAmount = document.getElementById('totalPerPerson');
 
-let input = document.getElementById('input');
-let inputPeople = document.getElementById('inputPeople');
-let tipButtons = document.querySelectorAll('.cal-btn');
+const calcTipSplit = (bill, numberOfPeople, tipPercentage) => {
+  let tipAmountPerPerson = (bill * tipPercentage) / numberOfPeople;
+  let totalAmountPerPerson = (bill / numberOfPeople) + tipAmountPerPerson;
 
-input.addEventListener('change', function() {
-  bill = input.value;
-  calcTipSplit(bill, percent, amountOfPeople);
-});
-
-tipButtons.forEach((btn) => {
-  btn.addEventListener('click', function() {
-    percent = parseFloat(btn.innerText)/100;
-    calcTipSplit(bill, percent, amountOfPeople);
-  })
-});
-
-inputPeople.addEventListener('change', function() {
-  amountOfPeople = inputPeople.value;
-  calcTipSplit(bill, percent, amountOfPeople);
-});
-
-function calcTipSplit(bill, percent, amountOfPeople) {
-  totalTip = bill * percent;
-  tipPerPerson = totalTip / amountOfPeople;
-  totalAmountPerPerson = bill / amountOfPeople;
-  totalPerPerson = tipPerPerson + totalAmountPerPerson;
-
-  return tipPerPerson;
-  return totalPerPerson;
+  tipPersonAmount.innerText = '$' + tipAmountPerPerson.toFixed(2);
+  totalPersonAmount.innerText = '$' + totalAmountPerPerson.toFixed(2);
 };
 
-//Grab the ID of tip amount
-//Put a lister on it. On change switch the innerText on that element
-// let completeTip = document.getElementById('tipPerPerson');
-// let completeAmount = document.getElementById('totalPerPerson');
+const getInputs = () => {
+  let bill = billInput.value;
+  let numberOfPeople = peopleInput.value;
+  buttons.forEach((btn) => {
+  btn.addEventListener('click', function() {
+      let tipPercentage = parseFloat(btn.innerText) / 100;
+      calcTipSplit(bill, numberOfPeople, tipPercentage);
+    })
+  });
+};
 
-// completeTip.innerText = tipPerPerson;
-// completeAmount.inner = totalPerPerson
+const resetButton = () => {
+  tipPersonAmount.innerText = '$0.00';
+  totalPersonAmount.innerText = '$0.00';
+
+  billInput.value = '';
+  peopleInput.value = '';
+  buttons.value = '';
+};
+
+billInput.addEventListener('change', getInputs);
+peopleInput.addEventListener('change', getInputs);
+resetBtn.addEventListener('click', resetButton);
