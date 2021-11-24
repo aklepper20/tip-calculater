@@ -33,42 +33,60 @@ let resetBtn = document.getElementById('reset-btn');
 let tipPersonAmount = document.getElementById('tipPerPerson');
 let totalPersonAmount = document.getElementById('totalPerPerson');
 
-const calcTipSplit = (bill, numberOfPeople, tipPercentage) => {
-  let tipAmountPerPerson = (bill * tipPercentage) / numberOfPeople;
-  let totalAmountPerPerson = (bill / numberOfPeople) + tipAmountPerPerson;
+let bill;
+let numberOfPeople;
+let percent;
 
-  tipPersonAmount.innerText = '$' + tipAmountPerPerson.toFixed(2);
-  totalPersonAmount.innerText = '$' + totalAmountPerPerson.toFixed(2);
-};
+const calcTipSplit = (bill, numberOfPeople, percent) => {
+  bill = parseInt(bill);
+  numberOfPeople = parseInt(numberOfPeople);
+  percent /= 100;
+  console.log(bill,numberOfPeople, percent)
 
-const getInputs = () => {
-  let bill = billInput.value;
-  let numberOfPeople = peopleInput.value;
-  let custom = parseFloat(customButton.value) / 100;
+  if (bill && numberOfPeople && percent) {
+    let tipAmountPerPerson = (bill * percent) / numberOfPeople;
+    let totalAmountPerPerson = (bill / numberOfPeople) + tipAmountPerPerson;
 
-  if (!custom) {
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', function() {
-        let tipPercentage = parseFloat(btn.innerText) / 100;
-        calcTipSplit(bill, numberOfPeople, tipPercentage);
-      })
-    });
-  } else {
-      calcTipSplit(bill, numberOfPeople, custom)
-  }
-
-};
+    tipPersonAmount.innerText = '$' + tipAmountPerPerson.toFixed(2);
+    totalPersonAmount.innerText = '$' + totalAmountPerPerson.toFixed(2);
+    }
+  };
 
 const resetButton = () => {
   tipPersonAmount.innerText = '$0.00';
   totalPersonAmount.innerText = '$0.00';
 
+  bill = '';
+  numberOfPeople = '';
+  percent = '';
+
   billInput.value = '';
   peopleInput.value = '';
-  buttons.value = '';
+  buttons.innerText = '';
+  customButton.value = '';
 };
 
-billInput.addEventListener('change', getInputs);
-peopleInput.addEventListener('change', getInputs);
-customButton.addEventListener('change', getInputs)
 resetBtn.addEventListener('click', resetButton);
+
+customButton.addEventListener('change', function() {
+  percent = parseInt(customButton.value);
+  calcTipSplit(bill, numberOfPeople, percent)
+  }
+)
+
+billInput.addEventListener('change', function() {
+  bill = billInput.value;
+  calcTipSplit(bill, numberOfPeople, percent);
+});
+
+peopleInput.addEventListener('change', function() {
+  numberOfPeople = peopleInput.value;
+  calcTipSplit(bill, numberOfPeople, percent);
+});
+
+buttons.forEach((btn) => {
+  btn.addEventListener('click', function() {
+    percent = parseFloat(btn.innerText);
+    calcTipSplit(bill, numberOfPeople, percent)
+  })
+});
