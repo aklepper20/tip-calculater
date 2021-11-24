@@ -1,18 +1,20 @@
+let backgroundColorOfBody = document.body;
+let container = document.getElementsByClassName('container')[0];
 let theme = document.getElementById('theme');
 let darkMode = false;
 
-let backgroundColorOfBody = document.body;
-
 function darkModeProperties() {
-  backgroundColorOfBody.style.backgroundColor = 'rgb(20,29,47)'
-  theme.src = './images/icon-sun (1).svg';
   darkMode = true;
+  theme.src = './images/sun.svg';
+  backgroundColorOfBody.style.backgroundColor = '#151515';
+  container.style.backgroundColor = '#301B3F';
 }
 
 function lightModeProperties() {
-  theme.src = './images/icon-moon (1).svg'
-  backgroundColorOfBody.style.backgroundColor = 'hsl(185, 41%, 84%'
   darkMode = false;
+  theme.src = './images/moon.svg';
+  backgroundColorOfBody.style.backgroundColor = 'hsl(185, 41%, 84%)';
+  container.style.backgroundColor = 'hsl(0, 0%, 100%)';
 }
 
 theme.addEventListener('click', function() {
@@ -72,7 +74,7 @@ customButton.addEventListener('change', function() {
   percent = parseInt(customButton.value);
   calcTipSplit(bill, numberOfPeople, percent)
   }
-)
+);
 
 billInput.addEventListener('change', function() {
   bill = billInput.value;
